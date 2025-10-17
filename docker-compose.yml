@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  mcp:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/kylin-mcp
+    environment:
+      - DEBUG=true

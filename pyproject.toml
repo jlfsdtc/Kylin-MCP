@@ -1,0 +1,47 @@
+[project]
+name = "kylin-mcp"
+version = "0.0.1"
+description = "official MCP server for Apache Kylin"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "loguru>=0.7.3",
+    "fastmcp>=2.12.0,<2.13.0",
+    "pandas>=2.2.3",
+    "plotly>=6.0.1",
+    "kaleido==0.2.1",
+    "adbc-driver-manager>=0.8.0",
+    "adbc-driver-flightsql>=0.8.0",
+    "pyarrow>=14.0.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "fastapi>=0.108.0",
+    "uvicorn[standard]>=0.25.0",
+    "requests>=2.31.0",
+    "httpx>=0.26.0",
+    "curlify==2.2.1",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "debugpy>=1.8.16"
+]
+
+[[project.authors]]
+name = "jlfsdtc"
+email = "jlfsdtc@apache.org"
+
+[build-system]
+requires = [ "hatchling",]
+build-backend = "hatchling.build"
+
+[project.scripts]
+kylin-mcp = "kylin_mcp.main:main"
+
+[tool.ruff]
+line-length = 100
