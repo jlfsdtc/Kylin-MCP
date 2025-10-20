@@ -4849,47 +4849,6 @@ class KylinHttpClient:
         resp = self._request("POST", url, json=payload)
         return resp
 
-    def get_clickhouse_nodes(self, project):
-        url = f"/storage/project/nodes?project={project}"
-        resp = self._request("GET", url)
-        return resp
-
-    def add_clickhouse_nodes(self, project, new_nodes):
-        """
-        add new clickhouse nodes
-        :param new_nodes: list, clickhouse group names
-        :return
-        """
-        url = "/storage/project/state"
-        payload = {"project": project, "enabled": True, "new_nodes": new_nodes}
-        resp = self._request("POST", url, json=payload)
-        return resp
-
-    def enable_tiered_storage(self, project, model_id):
-        url = "/storage/model/state"
-        payload = {"project": project, "model": model_id, "enabled": True}
-        resp = self._request("POST", url, json=payload)
-
-    def remove_clickhouse_nodes(self, project):
-        url = "/storage/project/state"
-        payload = {
-            "project": project,
-            "enabled": False,
-        }
-        resp = self._request("POST", url, json=payload)
-        return resp
-
-    def refresh_ke_memory(self):
-        url = "/storage/config/refresh"
-        resp = self._request("POST", url, headers=self._public_headers)
-        return resp
-
-    def remove_tiered_storage_data(self, projects):
-        url = "/storage/project/clean"
-        payload = {"projects": projects}
-        resp = self._request("POST", url, json=payload, headers=self._public_headers)
-        return resp
-
     def decorate_request(self):
         self._request = self.sleep_after_request(self._request)
         logging.debug(f"[kylin]Decorate 'self._request' function")

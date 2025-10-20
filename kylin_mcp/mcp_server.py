@@ -4,6 +4,7 @@ from typing import Optional, List
 import concurrent.futures
 import atexit
 import os
+from urllib import response
 
 from dotenv import load_dotenv
 from fastmcp import FastMCP
@@ -44,8 +45,8 @@ async def health_check(request: Request) -> PlainTextResponse:
     try:
         # Try to create a client connection to verify Kylin connectivity
         client = create_kylin_client()
-        health_check = client.check_ke_health()
-        return PlainTextResponse(f"Kylin status is {health_check}")
+        response = client.check_ke_health()
+        return PlainTextResponse(f"Kylin status is {response['status']}")
     except Exception as e:
         # Return 503 Service Unavailable if we can't connect to Kylin
         return PlainTextResponse(
