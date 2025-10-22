@@ -15,25 +15,23 @@
 # specific language governing permissions and limitations
 # under the License.
 
+"""
+Apache Kylin MCP Tools Manager
+Responsible for tool registration, management, scheduling and routing, does not contain specific business logic implementation
+"""
+
 import logging
-import json
-from typing import Optional, List
 import concurrent.futures
 import atexit
-import os
-from urllib import response
 
 from dotenv import load_dotenv
 from fastmcp import FastMCP
 from fastmcp.tools import Tool
-from fastmcp.prompts import Prompt
 from fastmcp.exceptions import ToolError
-from dataclasses import dataclass, field, asdict, is_dataclass
 from starlette.requests import Request
 from starlette.responses import PlainTextResponse
-
 from kylin_mcp.utils import kylin_instance
-from kylin_mcp.utils.mcp_env import get_config
+from kylin_mcp.utils.config import get_config
 from kylin_mcp.tool.kylin_prompt import KYLIN_PROMPT
 
 MCP_SERVER_NAME = "mcp-kylin"
@@ -70,11 +68,13 @@ async def health_check(request: Request) -> PlainTextResponse:
             f"ERROR - Cannot connect to Kylin: {str(e)}", status_code=503
         )
 
+
 def list_project():
     """List available Kylin projects."""
     logger.info(f"Listing Kylin projects")
     client = create_kylin_client()
     return client.get_project()
+
 
 def list_tables(
     project: str,

@@ -16,10 +16,6 @@
 # under the License.
 
 """
-Apache Kylin MCP Prompts Manager
-Provides standardized management of query templates and intelligent prompts
-"""
-
-KYLIN_PROMPT = """
-Prompt for Kylin MCP server.
+Apache Kylin MCP Resources
+Provides standardized abstraction and access interface for database metadata
 """

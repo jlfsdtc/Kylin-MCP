@@ -16,7 +16,7 @@
 # under the License.
 
 from kylin_mcp.tool.kylin_tool import mcp
-from kylin_mcp.utils.mcp_env import TransportType, get_config
+from kylin_mcp.utils.config import TransportType, get_config
 
 def main():
     config = get_config()

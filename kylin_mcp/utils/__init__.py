@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-Utilities Package - Contains utility classes and helper functions.
+Apache Kylin Utilities Package - Contains utility classes and helper functions.
 
 This package includes:
 - Database connection and operations

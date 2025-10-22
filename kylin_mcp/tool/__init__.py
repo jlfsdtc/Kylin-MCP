@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-MCP Tools Package - Contains all MCP tool implementations.
+Apache Kylin MCP Tools Package - Contains all MCP tool implementations.
 
 This package includes:
 - Kylin database tools

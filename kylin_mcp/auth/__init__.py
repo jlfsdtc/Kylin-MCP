@@ -16,6 +16,6 @@
 # specific language governing permissions and limitations
 # under the License.
 """
-Kylin MCP Server Authentication Module
+Apache Kylin MCP Server Authentication Module
 Provides JWT-based, Token-based, and OAuth 2.0/OIDC authentication and authorization services
 """
