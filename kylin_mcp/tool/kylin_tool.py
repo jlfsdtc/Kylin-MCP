@@ -70,6 +70,11 @@ async def health_check(request: Request) -> PlainTextResponse:
             f"ERROR - Cannot connect to Kylin: {str(e)}", status_code=503
         )
 
+def list_project():
+    """List available Kylin projects."""
+    logger.info(f"Listing Kylin projects")
+    client = create_kylin_client()
+    return client.get_project()
 
 def list_tables(
     project: str,
@@ -175,6 +180,7 @@ def create_kylin_client():
 
 
 # Register tools based on configuration
+mcp.add_tool(Tool.from_function(list_project))
 mcp.add_tool(Tool.from_function(list_tables))
 mcp.add_tool(Tool.from_function(run_select_query))
 logger.info("Kylin tools registered")
